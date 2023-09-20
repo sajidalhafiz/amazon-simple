@@ -35,7 +35,7 @@ const Shop = () => {
                     </Product>)
                 }
             </div>
-            <div>
+            <div style={{position:"sticky"}}>
                 <Cart cart={cart}></Cart>
             </div>
         </div>
