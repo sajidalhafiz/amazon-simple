@@ -5,7 +5,7 @@ import { faTrashCan, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { deleteShoppingCart } from '../../utilities/fakedb';
 
 const Cart = ({cart}) => {
-    console.log(cart)
+    // console.log(cart)
     
     let totalPrice = 0;
     let totalShipping = 0;
