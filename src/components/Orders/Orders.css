@@ -1,0 +1,12 @@
+.orders-container {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}
+
+.items {
+    margin: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+    gap: 24px;
+}
