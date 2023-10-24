@@ -4,6 +4,9 @@ import { useEffect } from 'react';
 import Product from '../Product/Product';
 import Cart from '../Cart/Cart';
 import { addToDb, getShoppingCart } from '../../utilities/fakedb';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 
 const Shop = () => {
@@ -21,10 +24,10 @@ const Shop = () => {
         const storedCart = getShoppingCart();
         const savedCart = [];
 
-        for(const id in storedCart){
+        for (const id in storedCart) {
             // step 2: find product
             const addedProduct = products.find(product => product.id === id)
-            if(addedProduct){
+            if (addedProduct) {
                 // step 3: set quantity
                 const quantity = storedCart[id];
                 addedProduct.quantity = quantity;
@@ -35,7 +38,7 @@ const Shop = () => {
         }
         // step 5: set the savedCart to DB
         setCart(savedCart)
-    } ,[products])
+    }, [products])
 
     // const handleAddToCart = (product) => {
     //     console.log(product);
@@ -59,7 +62,14 @@ const Shop = () => {
                 }
             </div>
             <div style={{ position: "sticky" }}>
-                <Cart cart={cart}></Cart>
+                <Cart cart={cart}>
+                    <Link className='review-btn-link' to='/orders'>
+                        <button className='review-btn'>
+                            Review Order
+                            <FontAwesomeIcon style={{ marginLeft: "12px" }} icon={faArrowRight} />
+                        </button>
+                    </Link>
+                </Cart>
             </div>
         </div>
     );

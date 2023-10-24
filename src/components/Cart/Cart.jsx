@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { deleteShoppingCart } from '../../utilities/fakedb';
 
-const Cart = ({cart}) => {
+const Cart = ({cart, children}) => {
     // console.log(cart)
     
     let totalPrice = 0;
@@ -34,10 +34,7 @@ const Cart = ({cart}) => {
                 Clear Cart
                 <FontAwesomeIcon style={{ marginLeft: "12px" }} icon={faTrashCan} />
             </button>
-            <button className='review-btn'>
-                Review Order
-                <FontAwesomeIcon style={{ marginLeft: "12px" }} icon={faArrowRight} />
-            </button>
+            {children}
         </div>
     );
 };
