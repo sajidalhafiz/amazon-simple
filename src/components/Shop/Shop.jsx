@@ -11,7 +11,8 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
-    const [cart, setCart] = useState([])
+    const [isShow, setIsShow] = useState(true);
+    const [cart, setCart] = useState([]);
 
     useEffect(() => {
         fetch('products.json')
@@ -53,13 +54,14 @@ const Shop = () => {
         <div className='shop-container'>
             <div className="product-container">
                 {
-                    products.map(product => <Product
+                    products.slice(0, isShow ? 16 : products.length).map(product => <Product
                         key={product.id}
                         product={product}
                         handleAddToCart={handleAddToCart}
                     >
                     </Product>)
                 }
+                {isShow && <button className='review-btn' onClick={() => setIsShow(false)}>See All Products</button>}
             </div>
             <div style={{ position: "sticky" }}>
                 <Cart cart={cart}>

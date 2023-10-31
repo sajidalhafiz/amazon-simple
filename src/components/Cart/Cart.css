@@ -12,6 +12,9 @@
     text-align: start;
     padding-left: 32px;
 }
+.order-summary>h2{
+    padding-left: 24px;
+}
 .order-summary button{
     width: 232px;
     height: 48px;

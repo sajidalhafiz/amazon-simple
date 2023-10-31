@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
 import './index.css'
 import {
   createBrowserRouter,
@@ -13,6 +12,7 @@ import Inventory from './components/Inventory/Inventory.jsx';
 import Login from './components/Login/Login.jsx';
 import cartProductLoader from './loaders/cartProductLoader.js';
 import ProceedCheckout from './components/ProceedCheckout/ProceedCheckout.jsx';
+import SignUp from './components/SignUp/SignUp';
 
 
 const router = createBrowserRouter([
@@ -40,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: 'login',
         element: <Login/>
+      },
+      {
+        path: 'signup',
+        element: <SignUp/>
       },
       {
         path: '*',

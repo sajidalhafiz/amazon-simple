@@ -1,0 +1,93 @@
+.form-bg {
+    box-sizing: border-box;
+    margin: 100px auto;
+    padding: 40px;
+    width: 500px;
+    height: fit-content;
+    border-radius: 16px;
+    border: 8px solid #2A414F;
+    background: #FFF;
+    border-bottom: 16px solid rgba(255, 153, 0, 0.30);
+    border-left: 12px solid rgba(255, 153, 0, 0.30);
+}
+
+.form-title {
+    font-size: 35px;
+    color: #2A414F;
+    text-align: center;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+}
+
+.input-field,
+.form-btn,
+.google-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+}
+
+.input-field label {
+    font-size: 17px;
+    color: #2A414F;
+    text-align: start;
+}
+
+.input-field input {
+    border-radius: 5px;
+    border: 1px solid #95A0A7;
+    font-size: 16px;
+    padding: 16px;
+    background-color: white;
+    color: #2A414F;
+}
+
+.form-btn button {
+    border-radius: 5px;
+    background: rgba(255, 153, 0, 0.30);
+    color: black;
+    font-size: 21px;
+}
+
+.form-btn small {
+    font-size: 15px;
+    color: #2A414F;
+}
+
+.form-btn small>a {
+    font-size: 15px;
+    color: #F90;
+    margin-left: 8px;
+}
+
+.form-btn small>a:hover {
+    color: rgb(200, 120, 0);
+}
+
+.divider {
+    display: flex;
+    margin-block: 16px;
+    align-items: center;
+}
+
+.divider hr {
+    width: 145px;
+    height: 1px;
+    background: #95A0A7;
+}
+.google-btn button{
+    font-size: 21px;
+    color: #2A414F;
+    border-radius: 5px;
+    background: white;
+    border: 2px solid #95A0A7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}

@@ -11,7 +11,9 @@
     display: flex;
     justify-content: space-between;
     gap: 32px;
-    
+} 
+a{
+    color: white;
 } 
 
 .nav-items a:hover{

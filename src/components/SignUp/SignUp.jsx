@@ -1,12 +1,10 @@
 import React from 'react';
-import './Login.css';
 import { Link } from 'react-router-dom';
 
-
-const Login = () => {
+const SignUp = () => {
     return (
         <div className='form-bg'>
-            <h2 className='form-title'>Login</h2>
+            <h2 className='form-title'>Sign Up</h2>
             <form className='form-container'>
                 <div className='input-field'>
                     <label>Email</label>
@@ -16,9 +14,13 @@ const Login = () => {
                     <label>Password</label>
                     <input type="password" name='password' placeholder='enter your password' />
                 </div>
+                <div className='input-field'>
+                    <label>Password</label>
+                    <input type="password" name='confirmPassword' placeholder='enter your password again' />
+                </div>
                 <div className='form-btn'>
-                    <button>Login</button>
-                    <small>New to Ema-john? <Link to='/signup'>Create New Account</Link></small>
+                    <button>Sign Up</button>
+                    <small>Already have an account? <Link to='/login'>Login</Link></small>
                 </div>
             </form>
             <div className='divider'>
@@ -41,4 +43,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default SignUp;

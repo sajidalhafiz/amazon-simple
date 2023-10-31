@@ -12,7 +12,8 @@ const Header = () => {
                 <ActiveLink to="/">Shop</ActiveLink>
                 <ActiveLink to="/orders">Order Review</ActiveLink>
                 <ActiveLink to="/inventory">Inventory</ActiveLink>
-                <ActiveLink to="/login">Login</ActiveLink>
+                <ActiveLink to="/login">Log In</ActiveLink>
+                <ActiveLink to="/signup">Sign Up</ActiveLink>
             </div>
         </nav>
     );
