@@ -1,20 +1,56 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Login.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import handleShowHide from '../../utilities/showHideField';
+import { AuthContext } from '../providers/AuthProvider';
+
 
 
 const Login = () => {
+
+    const { signIn } = useContext(AuthContext);
+    // console.log(user)
+    let navigate = useNavigate();
+    let location = useLocation();
+    console.log(location)
+    const from = location.state?.from?.pathname || '/';
+    console.log(from)
+    const handleOnSubmit = event => {
+        event.preventDefault();
+
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password)
+
+
+
+        signIn(email, password)
+            .then(result => {
+                console.log(result.user)
+                navigate(from, { replace: true })
+            })
+            .catch(error => console.error(error))
+
+        // form.reset();
+    }
+
+
+
     return (
         <div className='form-bg'>
             <h2 className='form-title'>Login</h2>
-            <form className='form-container'>
+            <form className='form-container' onSubmit={handleOnSubmit}>
                 <div className='input-field'>
                     <label>Email</label>
-                    <input type="email" name='email' placeholder='enter your email' />
+                    <input type="email" name='email' placeholder='enter your email' required />
                 </div>
                 <div className='input-field'>
                     <label>Password</label>
-                    <input type="password" name='password' placeholder='enter your password' />
+                    <div className='password-div'>
+                        <input id='password' type="password" name='password' placeholder='enter your password' required />
+                        <small onClick={handleShowHide} className='show-hide'>show</small>
+                    </div>
                 </div>
                 <div className='form-btn'>
                     <button>Login</button>

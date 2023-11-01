@@ -1,22 +1,68 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Success from '../Toasts/Success';
+import Warning from '../Toasts/Warning';
+import handleShowHide from '../../utilities/showHideField';
+import { AuthContext } from '../providers/AuthProvider';
 
 const SignUp = () => {
+
+    const { user, createUser } = useContext(AuthContext);
+    const [success, setSuccess] = useState('');
+    const [warning, setWarning] = useState('');
+
+    const handleOnSubmit = event => {
+        event.preventDefault();
+        setWarning('');
+        setSuccess('')
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        const confirmPassword = form.confirmPassword.value;
+        console.log(email, password, confirmPassword)
+
+        createUser(email, password)
+            .then(result => console.log(result.user))
+            .catch(error => console.error(error));
+
+
+        if (!/(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}/.test(password)) {
+            setWarning('Your password should contain at least 1 uppercase, lowercase, digit, special-char and length 8+!');
+
+            return;
+        }
+        else if (password != confirmPassword) {
+            setWarning('Password and Confirm password does not matched!');
+            setTimeout(() => setWarning(''), 4000);
+            return;
+        }
+        else {
+            setSuccess('Welcome the Ema-john. Your are registered now.');
+            setTimeout(() => setSuccess(''), 4000);
+            form.reset();
+            return;
+        }
+    }
     return (
         <div className='form-bg'>
             <h2 className='form-title'>Sign Up</h2>
-            <form className='form-container'>
+            <form className='form-container' onSubmit={handleOnSubmit}>
                 <div className='input-field'>
                     <label>Email</label>
-                    <input type="email" name='email' placeholder='enter your email' />
+                    <input type="email" name='email' placeholder='enter your email' required />
                 </div>
                 <div className='input-field'>
                     <label>Password</label>
-                    <input type="password" name='password' placeholder='enter your password' />
+                    <div className='password-div'>
+                        <input id='password' type="password" name='password' placeholder='enter your password' required />
+                        <small onClick={handleShowHide} className='show-hide'>Show</small>
+                    </div>
                 </div>
                 <div className='input-field'>
-                    <label>Password</label>
-                    <input type="password" name='confirmPassword' placeholder='enter your password again' />
+                    <label>Confirm Password</label>
+                    <div className='password-div'>
+                        <input id='confirmPassword' type="password" name='confirmPassword' placeholder='enter your password again' required />
+                    </div>
                 </div>
                 <div className='form-btn'>
                     <button>Sign Up</button>
@@ -39,6 +85,9 @@ const SignUp = () => {
                 </svg>
                     Continue with Google</button>
             </div>
+            {/* Toasts */}
+            {success && <Success success={success}></Success>}
+            {warning && <Warning warning={warning}></Warning>}
         </div>
     );
 };

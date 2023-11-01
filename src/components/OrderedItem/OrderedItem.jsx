@@ -5,7 +5,7 @@ import { BsTrash } from "react-icons/bs";
 const OrderedItem = ({ item, handleItemRemove }) => {
     const { id, img, name, price, shipping } = item;
 
-    console.log(img, name, price, shipping)
+    // console.log(img, name, price, shipping)
 
     return (
         <div className='item'>

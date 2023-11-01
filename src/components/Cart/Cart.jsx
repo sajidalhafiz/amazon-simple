@@ -1,7 +1,7 @@
 // import React from 'react';
 import './Cart.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashCan, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { deleteShoppingCart } from '../../utilities/fakedb';
 
 const Cart = ({cart, children}) => {
